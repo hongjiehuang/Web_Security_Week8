@@ -26,9 +26,7 @@ Vulnerability #1: SQL Injection
 
 Vulnerability #2: Session Hijacking/Fixation
 
-
-
- * Steps: Login to the blue target, and change the ending URL to the given PHP script ```public/hacktools/change_session_id.php``` which gives the session id. Then we can open the other blue target without login in in the another browser. Change its url using the PHP script again, and set the session id to the previous session id, change the URL back, and we will find out that this blue target is also logined, which indicates that blue target has Session Hijacking/Fixation Vulnerability.
+ * Steps: Login to the blue target, and change the ending URL to the given PHP script ```public/hacktools/change_session_id.php``` which gives the session id. Then we can open the other blue target without login in in the other browser. Change its URL using the PHP script again, and set the session id to the previous session id, change the URL back, and we will find out that this blue target is also logined, which indicates that blue target has Session Hijacking/Fixation Vulnerability.
 
  * GIF Walkthrough: 
   <img src='blue_2.gif' title='Session Hijacking/Fixation' width='' alt='' />
@@ -37,7 +35,7 @@ Vulnerability #2: Session Hijacking/Fixation
 
 Vulnerability #1: Username Enumeration
 
- * Steps: When login with a username that not in the database, the alert message is in plain text, and inspect the message, we will see it says "failed". But when we try to login using a given username that is in the database, the alert message appeared is bold, and inspect the message tells us "failure". This tells the hacker that what user name is in the database,therefore,green target has Username Enumeration Vulnerability.
+ * Steps: When login with a username that is not in the database, the alert message is in plain text, and inspect the message, we will see it says "failed". But when we try to login using a given username that is in the database, the alert message appeared is bold, and inspect the message tells us "failure". This tells the hacker what user name is in the database, therefore,green target has Username Enumeration Vulnerability.
 
  * GIF Walkthrough:
  <img src='green_1.gif' title='Session Hijacking/Fixation' width='' alt='' />
@@ -55,14 +53,14 @@ Vulnerability #2: Cross-Site Scripting
 
 Vulnerability #1: Insecure Direct Object Reference
 
- * Steps: In the Find a Salesperson section, click the showed salesperson, the URL have the format```https://35.184.234.47/red/public/salesperson.php?id=```, we can find people that not in the given list by setting the id to the IDs that not in the list.When I testify id=10 and id=11, the red target display the two salesperson that not in the list but the other two target sites will go back to the Find a Salesperson page. So the the red target has IDOR Vulnerability.
+ * Steps: In the Find a Salesperson section, click on any salesperson in the section, the URL will have the format```https://35.184.234.47/red/public/salesperson.php?id=```, we can find peoples that are not in the given list by setting the id to the IDs that are not in the list.When I testify id=10 and id=11, the red target display the two salesperson that are not in the list but the other two target sites will go back to the Find a Salesperson page. So the the red target has IDOR Vulnerability.
 
  * GIF Walkthrough:
   <img src='red_1.gif' title='Insecure Direct Object Reference' width='' alt='' />
 
 Vulnerability #2: Cross-Site Request Forgery
 
- * Steps: Login to the target, and in the User section, edit the information like the Name, then change the value of csrd_token by inspecting the page, and click then click update. The red target allows us to make a change, while the other two targets show "Error: invalid request". Therefore, red target has CSRF Vulnerability.
+ * Steps: Login to the target, and in the User section, edit the information that we want, for example the Name, then change the value of csrd_token by inspecting the page, and then click update. The red target allows us to make a change, while the other two targets show "Error: invalid request". Therefore, red target has CSRF Vulnerability.
 
 
  * GIF Walkthrough:
@@ -76,5 +74,5 @@ Vulnerability #2: Cross-Site Request Forgery
   <img src='green_bonus.gif' title='Cross-Site Scripting' width='' alt='' />
 
 
-##Notes
+## Notes
 
